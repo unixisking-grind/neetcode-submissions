@@ -1,0 +1,14 @@
+"""
+M * N where n is the length of the longest string and M = number of strings
+"""
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        d = defaultdict(list)
+
+        for word in strs:
+            count = [0] * 26
+            for char in word:
+                count[ord(char) - ord('a')] += 1
+            d[tuple(count)].append(word)
+        
+        return list(d.values())
